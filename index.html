@@ -125,35 +125,43 @@ const motivi= [
 "come sei l'unica persona che mi ama in tutto e per tutto anche con i miei difetti",
 "come sorriderai dopo aver letto tutto"
 ];
-     const nota=[  "IMPORTANT bitch💜",
-"porca puttana devono essere 100 per filosofia da pignoli (tu) ma ne me stanno venendo in mente infiniti altri"];
-function sleep(ms) {
-return new Promise(resolve => setTimeout(resolve, ms));
-}
+ const nota = [
+      "non in ordine",
+      "IMPORTANT bitch💜",
+      "porca puttana devono essere 100 per filosofia da pignoli (tu) ma ne me stanno venendo in mente infiniti altri"
+    ];
 
-async function scriviMotivo(motivo, index) {
-const outputDiv = document.getElementById("output");
-const riga = document.createElement("div");
-outputDiv.appendChild(riga);
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-let testo = `${index + 1}. `;
-for (let char of motivo) {
-testo += char;
-riga.innerText = testo;
-await sleep(20);
-}
-}
+    async function scriviMotivo(motivo, index, èNota = false) {
+      const outputDiv = document.getElementById("output");
+      const riga = document.createElement("div");
+      outputDiv.appendChild(riga);
 
-async function mostraTutti() {
-for (let i = 0; i < motivi.length; i++) {
-await scriviMotivo(motivi[i], i);
-await sleep(100);
-}
-}
+      let testo = èNota ? ` Nota: ` : `${index + 1}. `;
+      for (let char of motivo) {
+        testo += char;
+        riga.innerText = testo;
+        await sleep(20);
+      }
+    }
 
-mostraTutti();
-</script>
+    async function mostraTutti() {
+      for (let i = 0; i < motivi.length; i++) {
+        await scriviMotivo(motivi[i], i);
+        await sleep(100);
+      }
+
+      // Mostra le note alla fine
+      for (let frase of nota) {
+        await scriviMotivo(frase, 0, true);
+        await sleep(200);
+      }
+    }
+
+    mostraTutti();
+  </script>
 </body>
-</html>
-
-       
+</html>   
