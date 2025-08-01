@@ -139,7 +139,7 @@ let testo = `${index + 1}. `;
 for (let char of motivo) {
 testo += char;
 riga.innerText = testo;
-await sleep(60);
+await sleep(10);
 }
 // Scroll automatico verso il basso dopo che la riga è stata scritta
 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
@@ -148,7 +148,7 @@ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 async function mostraTutti() {
 for (let i = 0; i < motivi.length; i++) {
 await scriviMotivo(motivi[i], i);
-await sleep(500);
+await sleep(100);
 }
 }
 
