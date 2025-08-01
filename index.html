@@ -23,8 +23,8 @@ white-space: pre-wrap;
 <body>
 <div id="output"></div>
 <script>
-       "non in ordine"
-const motivi = [
+     const nota=["non in ordine"];
+const motivi= [
 "come mi guardi",
 "come mi parli",
 "come mi spieghi (o almeno ci provi)",
@@ -126,8 +126,8 @@ const motivi = [
 "come sei l'unica persona che mi ama in tutto e per tutto anche con i miei difetti",
 "come sorriderai dopo aver letto tutto"
 ];
-       "IMPORTANT bitch"
-"porca puttana devono essere 100 per filosofia da pignoli (tu) ma ne me stanno venendo in mente infiniti altri"
+     const nota=[  "IMPORTANT bitch"
+"porca puttana devono essere 100 per filosofia da pignoli (tu) ma ne me stanno venendo in mente infiniti altri"];
 function sleep(ms) {
 return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -143,8 +143,6 @@ testo += char;
 riga.innerText = testo;
 await sleep(20);
 }
-// Scroll automatico verso il basso dopo che la riga è stata scritta
-window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
 async function mostraTutti() {
