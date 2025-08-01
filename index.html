@@ -127,22 +127,26 @@
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        async function scriviMotivo(motivo) {
+        async function scriviMotivo(motivo,index) {
             const outputDiv = document.getElementById("output");
-            let output = "";
+            let output = `${index+1}.`;
             for (let char of motivo) {
                 output += char;
                 outputDiv.innerText = output;
-                await sleep(50);
+                await sleep(60);
             }
             outputDiv.innerHTML += "<br><br>";
         }
 
         async function mostraTutti() {
-            for (let motivo of motivi) {
-                await scriviMotivo(motivo);
+            for (let i=0;i<motivi.lenght;i++) {
+                await scriviMotivo(motivi[i],i);
                 await sleep(300);
             }
+            await sleep(1000); //Pausa finale
+            document.getElementById("output").innerHTML=motivi
+            .map((m,i)=>`${i+1}.${m}`)
+            .join("<br><br>");
         }
 
         mostraTutti();
