@@ -1,153 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Motivi per cui ti amo</title>
-    <style>
-        body {
-            background-color: #1e1e1e;
-            color: #f2f2f2;
-            font-family: 'Courier New', monospace;
-            font-size: 18px;
-            padding: 2em;
-        }
-        #output {
-            white-space: pre-wrap;
-        }
-    </style>
+<meta charset="UTF-8" />
+<title>Motivi per cui ti amo</title>
+<style>
+body {
+background-color: #1e1e1e;
+color: #f2f2f2;
+font-family: 'Courier New', monospace;
+font-size: 18px;
+padding: 2em;
+margin: 0;
+height: 100vh;
+overflow-y: auto;
+}
+#output > div {
+margin-bottom: 1.5em;
+white-space: pre-wrap;
+}
+</style>
 </head>
 <body>
-    <div id="output"></div>
-    <script>
-        const motivi = [
-            "come mi guardi",
-            "come mi parli",
-            "come mi spieghi (o almeno ci provi)",
-            "come mi ascolti",
-            "come mi fai la linguaccia",
-            "come mi tocchi (anche no sus)",
-            "come cambi il tuo modo di baciarmi per ogni situazione",
-            "come passi da duro oscuro e misterioso a bimbetto subito quando siamo da soli",
-            "come sorridi quando ci perdiamo nei nostri sguardi",
-            "la faccia concentrata quando ti danno un qualsiasi dispositivo con un qualsiasi problema",
-            "come aspetti il momento giusto per attacarmi a slinguazzate",
-            "come mi guardi quando aspetti che capisca il doppiosenso",
-            "come fai il sorriso dritto prima di ridere",
-            "come ti sciogli quando appoggi la testa sulla mia spalla",
-            "come inspiri il mio odore come se fosse ossigeno e tu fossi appena riemerso dopo un'ora sott`acqua",
-            "come provi a far sparire tutte le emozioni dalla faccia quando ti incazzi",
-            "come il tuo sguardo diventa vuoto quando cerco di discutere con te",
-            "come sorrido quando vedo qualcuno alzarsi troppo velocemente e perdere leggermente l'equilibrio",
-            "come sorrido quando vedo qualcuno baciarsi",
-            "come fai la voce soffice quando mi devi dire che sono una rompi palle",
-            "come sdrammatizzi quando non te ne frega un cazzo dicendo ciava cazzo con la voce da bimbo",
-            "come ti sciogli quando ti bacio il collo",
-            "come mi guardi soddisfatto quando mi faccio vicina io per un bacio quando tu ti allontani",
-            "come i tuoi occhi flashano di sfida quando aspetti che mi arrenda e che ti baci",
-            "come fai la faccia da bambino felice quando vedi che ti ho lasciato segni",
-            "la tua pelle dell'avambraccio che mi scorre sotto i polpastrelli prima di prenderti la mano",
-            "come alzi leggermente le sopracciglia quando litighiamo",
-            "come cominci a cantare le canzoni che conosci a priscindere dal luogo o dal momento (almeno imparati i lirics)",
-            "come sorridi imbarazzato e guardi altrove quando faccio apprezzamenti sul tuo sorriso",
-            "lo sguardo che mi fai quando mi giro e stai facendo qualcosa che non dovresti",
-            "come tutto di te mi fa sorridere fino a farmi venire i crampi alle guance",
-            "come prendi a gesticolare quando parli di qualcosa che ti appassiona",
-            "come ti si vede la vena sulla fronte quando sei sopra di me",
-            "come ti intralcia la collana quando fai quello che hai capito",
-            "come io sia ancora convinta che tu abbia il buco all'orecchio e invece è un neo",
-            "come non sei capace di dare un bacio casto ma sempre tutti bavosi",
-            "come ti lamenti quando ti dico le acconciature che ti faró (lo so che lo vuoi)",
-            "come sai mettere le persone che ami prima di tutto a tutti i costi",
-            "come spacchi il cazzo e non mi fai portare le borse",
-            "come ti sei rassegnato a lasciarmi portare lo zaino di scuola (succhia)",
-            "come profumavi la sera del nostro primo lungo vero abbraccio",
-            "come apprezzi i regali che ti faccio",
-            "come sei insopportabilmente altruista soprattutto quando non dovresti",
-            "come ti preoccupi per me",
-            "come ci sei per me sempre e comunque",
-            "come sei troppo orgoglioso per tornare da me dopo i litigi",
-            "come mi proteggeresti in ogni modo e in ogni situazione (non te lo lascio fare)",
-            "come le tue mani sembrino vissute",
-            "tutte le mini cicatrici sulle mani e gli avambracci",
-            "tutti i nei sulla pelle",
-            "come fai il balletto felice quando ci abbracciamo",
-            "come hai imparato (o imparerai con le buone o con le cattive) a essere puntuale",
-            "l'essere matto per i dolci",
-            "come sei freddoloso",
-            "come sei sensibile",
-            "come passi da neutro a cutie pie quando sei con me",
-            "come sei un piccolo 12enne horny 24/7",
-            "le battute del cazzo",
-            "i giochi di parole che mi fanno venire voglia di piangere",
-            "come insisti quando vuoi qualcosa",
-            "come non sei minimamente capace a farti la barba",
-            "come provi spiegarti anche se non hai idea di quello che dici",
-            "come sei testardo",
-            "come stai diventando soffice e ciccino per merito mio (ancora troppo poco)",
-            "come guardi in alto conventrato quando fai i conti",
-            "come mi prendi la faccia e mi baci dicendo ma quanto sei bella con la voce da vecchio siciliano",
-            "come tieni al tuo supermarket",
-            "come sei fedele",
-            "come mi chiedi cosa fare quando le ragazze ti fanno le riechieste su ig",
-            "come noti tutti i minimi graffi/botte e mi chiedi subito tutto",
-            "come mi guardi in faccia se ti abbraccio senza guardarti per controllare se sto piangendo",
-            "come tieni a farci e farmi foto",
-            "come mi guardi con gli occhi socchiusi quando sei horny",
-            "quando sei troppo orgoglioso per scrivermi e mi fai sentire un po' dimenticata",
-            "come tieni a tua sorella",
-            "come sei un po' iperprotettivo",
-            "come sei un po' tanto iperprotettivo",
-            "come si vede tutta la tua agitazione/rabbia repressa sulle tue mani (unghie",
-            "come fai il bambino quando sei velice",
-            "come fai l'uomo serio e scontroso e rompicoglioni quando sei ferito",
-            "come sei dolce appena sveglito",
-            "come sei un bambino piclino appena sveglio",
-            "come mi fai sapere ogni volta che mangi i dolci che ti faccio",
-            "come mi giro e ti vedo che mi guardi con la tua faccetta da bimbetto che vuole solo baci",
-            "come tieni ai tuoi sogni",
-            "come riesci a fermare il tempo quando mi abbracci",
-            "come mi fai sapere che no matter how much perfection i loose mi amerai comunque",
-            "come non mi vuoi spingere a fare cose che sai che non voglio fare",
-            "come mi riesci a far diventare un po' più femminuccia ogni volta (sono io l'uomo donzella non ci provare)",
-            "come mi fai ri-innamorare ogni volta che fai vedere la tua intelligenza",
-            "come mi fai sentire sempre abbastanza così come sono senza impegnarmi (a differenza di quello che fa il resto del mondo)",
-            "come pensi di essere una merda e invece sei una delle persone col cuore più grande che conosca",
-            "come ridi con la tua risata vera, non quella nasale tanto per fare",
-            "come metti da parte l'orgoglio se capisci che il litigio è cominciato perchè ero ferita",
-            "il lato leggermente filosofico (non troppo ovviamente) che ti sale ogni tanto quando mi guardi",
-            "come sei competitivo (meno di me ovviamente)",
-            "come basta un bacetto per farti diventare di marmo (signore salvami)",
-            "come ti preoccupi di mettermi a disagio se sai che la situazione potrebbe farlo",
-            "come sei l'unica persona che mi ama in tutto e per tutto anche con i miei difetti",
-            "come sorriderai dopo aver letto tutto"
-        ];
+<div id="output"></div>
+<script>
+const motivi = [
+"come mi guardi",
+"come mi parli",
+"come mi spieghi (o almeno ci provi)",
+"come mi ascolti",
+"come mi fai la linguaccia",
+"come mi tocchi (anche no sus)",
+"come cambi il tuo modo di baciarmi per ogni situazione",
+"come passi da duro oscuro e misterioso a bimbetto subito quando siamo da soli",
+"come sorridi quando ci perdiamo nei nostri sguardi",
+"la faccia concentrata quando ti danno un qualsiasi dispositivo con un qualsiasi problema",
+"come aspetti il momento giusto per attacarmi a slinguazzate",
+"come mi guardi quando aspetti che capisca il doppiosenso",
+"come fai il sorriso dritto prima di ridere",
+"come ti sciogli quando appoggi la testa sulla mia spalla",
+"come inspiri il mio odore come se fosse ossigeno e tu fossi appena riemerso dopo un'ora sott`acqua",
+"come provi a far sparire tutte le emozioni dalla faccia quando ti incazzi",
+"come il tuo sguardo diventa vuoto quando cerco di discutere con te",
+"come sorrido quando vedo qualcuno alzarsi troppo velocemente e perdere leggermente l'equilibrio",
+"come sorrido quando vedo qualcuno baciarsi",
+"come fai la voce soffice quando mi devi dire che sono una rompi palle",
+"come sdrammatizzi quando non te ne frega un cazzo dicendo ciava cazzo con la voce da bimbo",
+"come ti sciogli quando ti bacio il collo",
+"come mi guardi soddisfatto quando mi faccio vicina io per un bacio quando tu ti allontani",
+"come i tuoi occhi flashano di sfida quando aspetti che mi arrenda e che ti baci",
+"come fai la faccia da bambino felice quando vedi che ti ho lasciato segni",
+"la tua pelle dell'avambraccio che mi scorre sotto i polpastrelli prima di prenderti la mano",
+"come alzi leggermente le sopracciglia quando litighiamo",
+"come cominci a cantare le canzoni che conosci a priscindere dal luogo o dal momento (almeno imparati i lirics)",
+"come sorridi imbarazzato e guardi altrove quando faccio apprezzamenti sul tuo sorriso",
+"lo sguardo che mi fai quando mi giro e stai facendo qualcosa che non dovresti",
+"come tutto di te mi fa sorridere fino a farmi venire i crampi alle guance",
+"come prendi a gesticolare quando parli di qualcosa che ti appassiona",
+"come ti si vede la vena sulla fronte quando sei sopra di me",
+"come ti intralcia la collana quando fai quello che hai capito",
+"come io sia ancora convinta che tu abbia il buco all'orecchio e invece è un neo",
+"come non sei capace di dare un bacio casto ma sempre tutti bavosi",
+"come ti lamenti quando ti dico le acconciature che ti faró (lo so che lo vuoi)",
+"come sai mettere le persone che ami prima di tutto a tutti i costi",
+"come spacchi il cazzo e non mi fai portare le borse",
+"come ti sei rassegnato a lasciarmi portare lo zaino di scuola (succhia)",
+"come profumavi la sera del nostro primo lungo vero abbraccio",
+"come apprezzi i regali che ti faccio",
+"come sei insopportabilmente altruista soprattutto quando non dovresti",
+"come ti preoccupi per me",
+"come ci sei per me sempre e comunque",
+"come sei troppo orgoglioso per tornare da me dopo i litigi",
+"come mi proteggeresti in ogni modo e in ogni situazione (non te lo lascio fare)",
+"come le tue mani sembrino vissute",
+"tutte le mini cicatrici sulle mani e gli avambracci",
+"tutti i nei sulla pelle",
+"come fai il balletto felice quando ci abbracciamo",
+"come hai imparato (o imparerai con le buone o con le cattive) a essere puntuale",
+"l'essere matto per i dolci",
+"come sei freddoloso",
+"come sei sensibile",
+"come passi da neutro a cutie pie quando sei con me",
+"come sei un piccolo 12enne horny 24/7",
+"le battute del cazzo",
+"i giochi di parole che mi fanno venire voglia di piangere",
+"come insisti quando vuoi qualcosa",
+"come non sei minimamente capace a farti la barba",
+"come provi spiegarti anche se non hai idea di quello che dici",
+"come sei testardo",
+"come stai diventando soffice e ciccino per merito mio (ancora troppo poco)",
+"come guardi in alto conventrato quando fai i conti",
+"come mi prendi la faccia e mi baci dicendo ma quanto sei bella con la voce da vecchio siciliano",
+"come tieni al tuo supermarket",
+"come sei fedele",
+"come mi chiedi cosa fare quando le ragazze ti fanno le riechieste su ig",
+"come noti tutti i minimi graffi/botte e mi chiedi subito tutto",
+"come mi guardi in faccia se ti abbraccio senza guardarti per controllare se sto piangendo",
+"come tieni a farci e farmi foto",
+"come mi guardi con gli occhi socchiusi quando sei horny",
+"quando sei troppo orgoglioso per scrivermi e mi fai sentire un po' dimenticata",
+"come tieni a tua sorella",
+"come sei un po' iperprotettivo",
+"come sei un po' tanto iperprotettivo",
+"come si vede tutta la tua agitazione/rabbia repressa sulle tue mani (unghie",
+"come fai il bambino quando sei velice",
+"come fai l'uomo serio e scontroso e rompicoglioni quando sei ferito",
+"come sei dolce appena sveglito",
+"come sei un bambino piclino appena sveglio",
+"come mi fai sapere ogni volta che mangi i dolci che ti faccio",
+"come mi giro e ti vedo che mi guardi con la tua faccetta da bimbetto che vuole solo baci",
+"come tieni ai tuoi sogni",
+"come riesci a fermare il tempo quando mi abbracci",
+"come mi fai sapere che no matter how much perfection i loose mi amerai comunque",
+"come non mi vuoi spingere a fare cose che sai che non voglio fare",
+"come mi riesci a far diventare un po' più femminuccia ogni volta (sono io l'uomo donzella non ci provare)",
+"come mi fai ri-innamorare ogni volta che fai vedere la tua intelligenza",
+"come mi fai sentire sempre abbastanza così come sono senza impegnarmi (a differenza di quello che fa il resto del mondo)",
+"come pensi di essere una merda e invece sei una delle persone col cuore più grande che conosca",
+"come ridi con la tua risata vera, non quella nasale tanto per fare",
+"come metti da parte l'orgoglio se capisci che il litigio è cominciato perchè ero ferita",
+"il lato leggermente filosofico (non troppo ovviamente) che ti sale ogni tanto quando mi guardi",
+"come sei competitivo (meno di me ovviamente)",
+"come basta un bacetto per farti diventare di marmo (signore salvami)",
+"come ti preoccupi di mettermi a disagio se sai che la situazione potrebbe farlo",
+"come sei l'unica persona che mi ama in tutto e per tutto anche con i miei difetti",
+"come sorriderai dopo aver letto tutto"
+];
 
-        async function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+function sleep(ms) {
+return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-        async function scriviMotivo(motivo,index) {
-            const outputDiv = document.getElementById("output");
-            const riga=document.createElement("div");
-            outputDiv.appendChild(riga);
-            
-            let testo = `${index+1}.`;
-            for (let char of motivo) {
-                testo += char;
-                riga.innerText = testo;
-                await sleep(60);
-            }
-            //Spazio dopo ogni motivo
-            riga.innerHTML += "<br><br>";
-        }
+async function scriviMotivo(motivo, index) {
+const outputDiv = document.getElementById("output");
+const riga = document.createElement("div");
+outputDiv.appendChild(riga);
 
-        async function mostraTutti() {
-            for (let i=0;i<motivi.length;i++) {
-                await scriviMotivo(motivi[i],i);
-                await sleep(300);
-            }
-            
-        }
+let testo = `${index + 1}. `;
+for (let char of motivo) {
+testo += char;
+riga.innerText = testo;
+await sleep(60);
+}
+// Scroll automatico verso il basso dopo che la riga è stata scritta
+window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+async function mostraTutti() {
+for (let i = 0; i < motivi.length; i++) {
+await scriviMotivo(motivi[i], i);
+await sleep(500);
+}
+}
+
+mostraTutti();
+</script>
+</body>
+</html>
 
        
